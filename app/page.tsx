@@ -1,52 +1,43 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { generateClient } from "aws-amplify/data";
-import type { Schema } from "@/amplify/data/resource";
-import "./../app/app.css";
-import { Amplify } from "aws-amplify";
-import outputs from "@/amplify_outputs.json";
+import { useState } from "react";
 import "@aws-amplify/ui-react/styles.css";
+// import { Amplify } from "aws-amplify";
+// import outputs from "@/amplify_outputs.json";
 
-Amplify.configure(outputs);
-
-const client = generateClient<Schema>();
+// Amplify.configure(outputs);
 
 export default function App() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
+    const [todos, setTodos] = useState<string[]>([]);
 
-  function listTodos() {
-    client.models.Todo.observeQuery().subscribe({
-      next: (data) => setTodos([...data.items]),
-    });
-  }
+    function createTodo() {
+        const content = window.prompt("Todo content");
+        if (content) {
+            setTodos((prev: any) => [...prev, content]);
+        }
+    }
 
-  useEffect(() => {
-    listTodos();
-  }, []);
+    return (
+        <main>
+            <h1>Example Static App for AWS Amplify</h1>
 
-  function createTodo() {
-    client.models.Todo.create({
-      content: window.prompt("Todo content"),
-    });
-  }
+            <div>
+                <text>
+                    A test for deploying a static website for the CIDS Website
+                </text>
+            </div>
 
-  return (
-    <main>
-      <h1>My todos</h1>
-      <button onClick={createTodo}>+ new</button>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.content}</li>
-        ))}
-      </ul>
-      <div>
-        🥳 App successfully hosted. Try creating a new todo.
-        <br />
-        <a href="https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/">
-          Review next steps of this tutorial.
-        </a>
-      </div>
-    </main>
-  );
+            <button onClick={createTodo}>+ new</button>
+            <ul>
+                {todos.map((todo, index) => (
+                    <li key={index}>{todo}</li>
+                ))}
+            </ul>
+
+            <br />
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <img src="/steve.jpeg" alt="Steve" width={300} />
+            </div>
+        </main>
+    );
 }
