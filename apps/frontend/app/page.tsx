@@ -27,12 +27,12 @@ export default function App() {
                 </text>
             </div>
 
-            <button onClick={createTodo}>+ new</button>
+            {/* <button onClick={createTodo}>+ new</button>
             <ul>
                 {todos.map((todo, index) => (
                     <li key={index}>{todo}</li>
                 ))}
-            </ul>
+            </ul> */}
 
             <br />
             <div style={{ display: "flex", justifyContent: "center" }}>
