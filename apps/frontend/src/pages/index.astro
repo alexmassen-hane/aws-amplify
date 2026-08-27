@@ -1,0 +1,50 @@
+---
+// Frontmatter: build-time code. Runs at build, never ships to the browser.
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Example Static App for AWS Amplify</title>
+    <meta
+      name="description"
+      content="A test for deploying a static website for the CIDS Website"
+    />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <h1>Example Static App for AWS Amplify</h1>
+      <p>A test for deploying a static website for the CIDS Website</p>
+      <br />
+      <div style="display: flex; justify-content: center;">
+        <img src="/steve.jpeg" alt="Steve" width="300" />
+      </div>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  body {
+    margin: 0;
+    background: linear-gradient(180deg, rgb(117, 81, 194), rgb(255, 255, 255));
+    display: flex;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+</style>
